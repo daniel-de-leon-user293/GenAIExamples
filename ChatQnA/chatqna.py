@@ -63,6 +63,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", None)
 
 def align_inputs(self, inputs, cur_node, runtime_graph, llm_parameters_dict, **kwargs):
     if self.services[cur_node].service_type == ServiceType.EMBEDDING:
+        print('HELLO!!! THIS IS DANIEL', inputs)
         inputs["inputs"] = inputs["text"]
         del inputs["text"]
     elif self.services[cur_node].service_type == ServiceType.RETRIEVER:
@@ -288,7 +289,7 @@ class ChatQnAService:
             name="guardrail_in",
             host=GUARDRAIL_SERVICE_HOST_IP,
             port=GUARDRAIL_SERVICE_PORT,
-            endpoint="/v1/guardrails",
+            endpoint="/v1/toxicity",
             use_remote_service=True,
             service_type=ServiceType.GUARDRAIL,
         )

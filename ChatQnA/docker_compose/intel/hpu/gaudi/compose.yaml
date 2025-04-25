@@ -107,6 +107,7 @@ services:
       LLM_MODEL_ID: ${LLM_MODEL_ID}
       NUM_CARDS: ${NUM_CARDS}
       VLLM_TORCH_PROFILER_DIR: "/mnt"
+      VLLM_SKIP_WARMUP: "true"
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:80/health || exit 1"]
       interval: 10s

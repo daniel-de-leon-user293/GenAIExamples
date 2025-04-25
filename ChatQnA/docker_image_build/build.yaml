@@ -67,6 +67,12 @@ services:
       dockerfile: comps/guardrails/src/guardrails/Dockerfile
     extends: chatqna
     image: ${REGISTRY:-opea}/guardrails:${TAG:-latest}
+  guardrails-toxicity-detection:
+    build:
+      context: GenAIComps
+      dockerfile: comps/guardrails/src/toxicity_detection/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/guardrails-toxicity-detection:${TAG:-latest}
   vllm-rocm:
     build:
       context: GenAIComps
